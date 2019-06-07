@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ref: https://howtodoinjava.com/log4j2/log4j-2-xml-configuration-example/ -->
+<Configuration status="WARN" monitorInterval="10">
+
+	<Properties>
+		<!-- <Property name="BASE_PATH">C:\\N6\\logs</Property>  -->
+		<Property name="BASE_PATH">${bundle:application:log.file.path}</Property>
+		<Property name="LOG_LEVEL_SPRING">${bundle:application:log.level.spring}</Property>
+		<Property name="LOG_LEVEL_HIBERNATE">${bundle:application:log.level.hibernate}</Property>
+		<Property name="LOG_LEVEL_APP">${bundle:application:log.level.app}</Property>
+		<Property name="LOG_LEVEL_ROOT">${bundle:application:log.level.root}</Property>
+		<Property name="LOG_PATTERN">%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%-20t] %msg%n</Property>
+	</Properties>
+	
+	<Appenders>
+		<Console name="ConsoleAppender" target="SYSTEM_OUT" follow="true">
+			<PatternLayout pattern="${LOG_PATTERN}" />
+		</Console>
+
+		<RollingFile name="RollingFile">
+			<FileName>${BASE_PATH}/hzDistDS.log</FileName>
+			<FilePattern>${BASE_PATH}/hzDistDS-%d{yyyy-MM-dd}.log</FilePattern>
+			<PatternLayout>
+				<Pattern>${LOG_PATTERN}</Pattern>
+			</PatternLayout>
+			<Policies>
+				<!-- <TimeBasedTriggeringPolicy interval="24" modulate="true" /> -->
+				<CronTriggeringPolicy schedule="0 0 0 * * ?" />
+        		<SizeBasedTriggeringPolicy size="25 MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="5" />
+		</RollingFile>
+
+	</Appenders>
+	
+	<Loggers>
+		<Logger name="org.springframework" level="${LOG_LEVEL_SPRING}" additivity="false">
+			<AppenderRef ref="RollingFile" />
+			<AppenderRef ref="ConsoleAppender" />
+		</Logger>
+		<Root level="${LOG_LEVEL_ROOT}" additivity="false">
+			<AppenderRef ref="ConsoleAppender" />
+		</Root>
+	</Loggers>
+</Configuration>

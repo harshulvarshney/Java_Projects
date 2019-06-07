@@ -1,0 +1,11 @@
+Diff Between Strategy and Factory:
+A factory pattern is a creational pattern - A strategy pattern is an behavioral pattern.
+A factory pattern is used to create objects of a specific type - A strategy pattern is use to perform an operation.
+
+In fact the two can be used together. For example, you may have a factory that creates your business objects. 
+It may use different strategies based on the persistence medium. If your data is stored locally in XML it would 
+use one strategy. If the data were remote in a different database, it would use another.
+
+Strategy pattern is often used together with Factory Method, 
+while Factory Method is often used for instantiation of other stereotypes, not only Strategies.
+
