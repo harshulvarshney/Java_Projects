@@ -139,6 +139,12 @@
 		<artifactId>spring-modules-jakarta-commons</artifactId>
 		<version>${version.springmodules-jakarta-commons}</version>
 	</dependency>
+	<dependency>
+		<groupId>org.projectlombok</groupId>
+		<artifactId>lombok</artifactId>
+		<version>1.18.8</version>
+		<scope>provided</scope>
+	</dependency>
 
 	<!-- ORM Layer Dependencies -->
 	<dependency>
