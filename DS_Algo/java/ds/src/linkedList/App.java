@@ -25,22 +25,19 @@ public class App {
 	
 	public static void main(String[] args) {
 		Node x = new Node(1);
-		x.next = new Node(2);
-		x.next.next = new Node(3);
-		x.next.next.next = new Node(4);
-		x.next.next.next.next = new Node(5);
-		x.next.next.next.next.next = new Node(6);
-		x.next.next.next.next.next.next = x.next.next;
-		
-		//print(x);
-		System.out.println();
-		/*LinkedList<Node> list = new LinkedList<>();
-		
-		for(int i = 0 ; i < 8; i++) {
-			list.add(new Node(i));
-		}*/
-		//print(list);
-		findLoop(x);
+		x.next = new Node(3);
+		x.next.next = new Node(4);
+		x.next.next.next = new Node(9);
+
+//		print(x);
+
+		Node y = new Node(2);
+		y.next = new Node(3);
+		y.next.next = new Node(8);
+
+		//print(y);
+
+		print(reverse(y));
 	}
 	
 	public static void print(Node x) {
@@ -48,12 +45,19 @@ public class App {
 			System.out.print(x.data + " -> ");
 			x = x.next;
 		}
+		System.out.println();
 	}
 	
-	private static void print(LinkedList<Node> list) {
-		for(int i = 0; i < list.size(); i++) {
-			System.out.print(list.get(i).data + ", ");
+	static Node reverse(Node curr) {
+		Node prev = null;
+		Node next = null;
+		while (curr != null) {
+			next = curr.next;
+			curr.next = prev;
+			prev = curr;
+			curr = next;
 		}
+		return prev;
 	}
 
 }
