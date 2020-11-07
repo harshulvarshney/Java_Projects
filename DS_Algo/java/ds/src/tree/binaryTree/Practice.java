@@ -1,34 +1,29 @@
 package tree.binaryTree;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
-import java.util.Stack;
-
-import javax.management.Query;
-
 import tree.BTreeFactory;
 import tree.Node;
+
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class Practice {
 	
 	public static void main(String[] args) {
 		Node<Integer> root = BTreeFactory.getBinaryTree();
-		//BTreePrinter.printNode(root);
-		print(root);
+		System.out.println(min(root));
 	}
 	
-	static void print(Node<Integer> root) {
+	static int min(Node root) {
 		if(root == null)
-			return;
-		
-		print(root.left);
+			return 0;
 		if(root.left == null && root.right == null)
-			System.out.print(root.data + ", ");
-		print(root.right);
-		
+			return 1;
+		if(root.left == null)
+			return 1 + min(root.right);
+		if(root.right == null)
+			return 1 + min(root.left);
+
+		return Math.min(min(root.left), min(root.right)) + 1;
 	}
 
 }

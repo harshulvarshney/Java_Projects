@@ -17,7 +17,7 @@ import java.util.Arrays;
 public class SelectionSort {
 	
 	public static void main(String[]s) {
-		int[] a = {7,3,2,5,4,1,6, -1,9};
+		int[] a = {5, 2, 3, 4, 1};
 		SelectionSort o = new SelectionSort();
 		o.sort(a);
 	}
@@ -25,6 +25,7 @@ public class SelectionSort {
 	private void sort(int[] a) {
 		if(a.length == 0)
 			return;
+		int swaps = 0;
 		//start loop
 		for(int i = 0; i < a.length-1; i++) {
 			int min = i;
@@ -34,13 +35,17 @@ public class SelectionSort {
 					min = j;
 				}
 			}
-			//swap
-			int temp = a[i];
-			a[i] = a[min];
-			a[min] = temp;
+			if(min != i) {
+				//swap
+				int temp = a[i];
+				a[i] = a[min];
+				a[min] = temp;
+				swaps++;
+			}
 		}
 		
 		System.out.println(Arrays.toString(a));
+		System.out.println("swaps: " + swaps);
 	}
 
 }

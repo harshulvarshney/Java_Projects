@@ -20,11 +20,11 @@ CONS:
 public class Graph {
 	
 	int V;
-    LinkedList<Integer> adjListArray[];
+    LinkedList<Integer>[] adjListArray;
     
     Graph(int V) {
     	this.V = V;
-    	adjListArray = new LinkedList[V];
+    	this.adjListArray = new LinkedList[V];
     	
     	for(int i = 0; i < V; i++) {
     		adjListArray[i] = new LinkedList<>();
@@ -38,7 +38,7 @@ public class Graph {
     
     public boolean searchEdge(int src, int dest) {
     	LinkedList<Integer> srcList = adjListArray[src];
-    	return srcList.stream().filter(v -> dest == v).findFirst().isPresent();
+    	return srcList.stream().anyMatch(v -> dest == v);
     }
     
     public void printGraph() {

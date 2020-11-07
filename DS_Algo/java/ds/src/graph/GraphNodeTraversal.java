@@ -55,7 +55,7 @@ public class GraphNodeTraversal {
         n6.neighbours = new GraphNode[] {n4, n5, n7};
         n7.neighbours = new GraphNode[] {n3, n4, n6};
         
-        dfs(n3, 7);
+        dfs(n1, 7);
 	}
 
 }
