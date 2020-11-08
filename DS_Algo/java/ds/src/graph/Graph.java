@@ -19,10 +19,10 @@ CONS:
 */
 public class Graph {
 	
-	int V;
-    LinkedList<Integer>[] adjListArray;
+	public int V;
+    public LinkedList<Integer>[] adjListArray;
     
-    Graph(int V) {
+    public Graph(int V) {
     	this.V = V;
     	this.adjListArray = new LinkedList[V];
     	

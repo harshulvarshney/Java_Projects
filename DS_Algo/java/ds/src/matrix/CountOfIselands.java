@@ -1,4 +1,4 @@
-package graph;
+package matrix;
 
 /**
  * The basic idea of the following solution is merging adjacent lands, 

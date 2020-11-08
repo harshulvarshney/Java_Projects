@@ -1,4 +1,7 @@
-package graph;
+package graph.problems;
+
+import graph.AdjacencyListPrinter;
+import graph.Graph;
 
 public class FindConnectedComponents {
 	
