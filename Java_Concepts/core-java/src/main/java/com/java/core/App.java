@@ -7,7 +7,9 @@ public class App {
 		ClonableClass c = o.clone();
 		
 		if(o != c) {
+			System.out.println(o);
 			System.out.println("cloned");
+			System.out.println(c);
 		}
 		
 	}

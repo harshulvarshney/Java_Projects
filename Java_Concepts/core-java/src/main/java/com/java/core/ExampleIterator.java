@@ -15,7 +15,7 @@ public class ExampleIterator {
 		CountDownLatch latch = new CountDownLatch(1);
 
 		List<String> collection = new ArrayList<>();
-		for (int i = 0; i < 100000; i++) {
+		for (int i = 0; i < 1000; i++) {
 			collection.add("" + i);
 		}
 		//below example shows if 2 iterators work on same collection and an element is removed by 1 iterator

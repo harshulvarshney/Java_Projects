@@ -5,7 +5,7 @@ package com.java.thread;
  *  another is calling static method of test class after taking class level lock
  *  1- both threads can run concurrently
  *  2- the thread who has taken object level lock can call a non-synchronized method 
- *  2- the thread who has taken object level lock can not call any of the synchronized static member of Test class
+ *  2-
  */
 public class ClassLevelLock {
 	

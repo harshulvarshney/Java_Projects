@@ -9,6 +9,15 @@ import java.util.Map;
  * methods required:
  * get(key)
  * put(key, value)
+ *
+ * LinkedHashMap provides a special constructor which enables us to specify,
+ * among custom load factor (LF) and initial capacity, a different ordering mechanism/strategy called access-order.
+ *
+ * This mechanism ensures that the order of iteration of elements is the order in which the elements were last accessed,
+ * from least-recently accessed to most-recently accessed.
+ *
+ * And so, building a Least Recently Used (LRU) cache is quite easy and practical with this kind of map.
+ * A successful put or get operation results in an access for the entry:
  * 
  */
 public class LRU_byLinkedHashMap {
