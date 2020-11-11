@@ -1,8 +1,7 @@
 package graph;
 
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * This is another graph representation similar to adjacency list
@@ -14,13 +13,18 @@ import java.util.Stack;
  */
 public class GraphNode {
 	
-	public GraphNode[] neighbours;
+	public List<GraphNode> neighbours;
 	public boolean visited;//this flag is part of GraphNode itself
 	public int val;
 	
 	public GraphNode(int value) {
 		this.val = value;
 		this.visited = false;
+		this.neighbours = new LinkedList<>();
+	}
+
+	public void addNeighbours(GraphNode... n) {
+		this.neighbours.addAll(Arrays.stream(n).collect(Collectors.toList()));
 	}
 	
 	public static void BFS(GraphNode root) {
@@ -72,23 +76,54 @@ public class GraphNode {
 	}
 	
 	public static void main(String[] args) {
-		GraphNode n1 = new GraphNode(1);
-        GraphNode n2 = new GraphNode(2);
-        GraphNode n3 = new GraphNode(3);
-        GraphNode n4 = new GraphNode(4);
-        GraphNode n5 = new GraphNode(5);
-        GraphNode n6 = new GraphNode(6);
-        GraphNode n7 = new GraphNode(7);
+        BFS(getCyclicGraph());
+	}
 
-        n1.neighbours = new GraphNode[] {n2, n4, n5};
-        n2.neighbours = new GraphNode[] {n1, n3, n4};
-        n3.neighbours = new GraphNode[] {n2, n4, n7};
-        n4.neighbours = new GraphNode[] {n1, n2, n3, n5, n6, n7};
-        n5.neighbours = new GraphNode[] {n1, n4, n6};
-        n6.neighbours = new GraphNode[] {n4, n5, n7};
-        n7.neighbours = new GraphNode[] {n3, n4, n6};
-        
-        BFS(n1);
+	public static GraphNode getCyclicGraph() {
+		GraphNode n1 = new GraphNode(1);
+		GraphNode n2 = new GraphNode(2);
+		GraphNode n3 = new GraphNode(3);
+		GraphNode n4 = new GraphNode(4);
+		GraphNode n5 = new GraphNode(5);
+		GraphNode n6 = new GraphNode(6);
+		GraphNode n7 = new GraphNode(7);
+
+		n1.addNeighbours(n2, n4, n5);
+		n2.addNeighbours(n1, n3, n4);
+		n3.addNeighbours(n2, n4, n7);
+		n4.addNeighbours(n1, n2, n3, n5, n6, n7);
+		n5.addNeighbours(n1, n4, n6);
+		n6.addNeighbours(n4, n5, n7);
+		n7.addNeighbours(n3, n4, n6);
+
+		return n1;
+	}
+
+	/**
+	 * 	<img src="./DAG.png">
+	 */
+	public static GraphNode getDAG() {
+		GraphNode n1 = new GraphNode(1);
+		GraphNode n2 = new GraphNode(2);
+		GraphNode n3 = new GraphNode(3);
+		GraphNode n4 = new GraphNode(4);
+		GraphNode n5 = new GraphNode(5);
+		GraphNode n6 = new GraphNode(6);
+		GraphNode n7 = new GraphNode(7);
+
+		n1.addNeighbours(n3);
+		n2.addNeighbours(n1, n3, n5, n6);
+		n3.addNeighbours(n6);
+		n4.addNeighbours(n1, n2);
+		n5.addNeighbours(n7);
+		n6.addNeighbours(n7);
+
+		return n4;
+	}
+
+	@Override
+	public String toString() {
+		return val+"";
 	}
 
 }

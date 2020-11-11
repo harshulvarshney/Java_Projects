@@ -39,23 +39,7 @@ public class GraphNodeTraversal {
 	}
 	
 	public static void main(String[] args) {
-		GraphNode n1 = new GraphNode(0);
-        GraphNode n2 = new GraphNode(1);
-        GraphNode n3 = new GraphNode(2);
-        GraphNode n4 = new GraphNode(3);
-        GraphNode n5 = new GraphNode(4);
-        GraphNode n6 = new GraphNode(5);
-        GraphNode n7 = new GraphNode(6);
-
-        n1.neighbours = new GraphNode[] {n2, n4, n5};
-        n2.neighbours = new GraphNode[] {n1, n3, n4};
-        n3.neighbours = new GraphNode[] {n2, n4, n7};
-        n4.neighbours = new GraphNode[] {n1, n2, n3, n5, n6, n7};
-        n5.neighbours = new GraphNode[] {n1, n4, n6};
-        n6.neighbours = new GraphNode[] {n4, n5, n7};
-        n7.neighbours = new GraphNode[] {n3, n4, n6};
-        
-        dfs(n1, 7);
+        dfs(GraphNode.getCyclicGraph(), 7);
 	}
 
 }
