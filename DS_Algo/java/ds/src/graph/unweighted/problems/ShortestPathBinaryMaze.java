@@ -1,4 +1,4 @@
-package graph.problems;
+package graph.unweighted.problems;
 
 import java.util.LinkedList;
 import java.util.Queue;

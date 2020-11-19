@@ -13,43 +13,38 @@ public class AddNumbers {
 	
 	private Node newHead = null;
 	private int carry = 0;
-	public Node add(Node head1, Node head2) {
-		int size1 = 0;
-		int size2 = 0;
-		
-		Node curr1 = head1;
-		Node curr2 = head2;
-		while(curr1 != null) {
-			size1++;
-			curr1 = curr1.next;
-		}
-		
-		while(curr2 != null) {
-			size2++;
-			curr2 = curr2.next;
-		}
-		
-		if(size1 > size2) {
-			int nodesToAdd = size1-size2;
-			while(nodesToAdd > 0) {
-				Node x = new Node(0);
-				x.next = head2;
-				head2 = x;
-				nodesToAdd--;
+
+	public Node add(Node l1, Node l2) {
+		int car = 0;
+		Node l3 = null;
+		Node curr = null;
+		while(l1 != null || l2 != null) {
+			int a = l1 != null ? l1.data : 0;
+			int b = l2 != null ? l2.data : 0;
+
+			int sum = a + b + car;
+			car = 0;
+			if(sum > 9) {
+				car = 1;
+				sum = sum % 10;
 			}
-		}
-		else if(size2 > size1) {
-			int nodesToAdd = size2-size1;
-			while(nodesToAdd > 0) {
-				Node x = new Node(0);
-				x.next = head1;
-				head1 = x;
-				nodesToAdd--;
+
+			if(l3 == null) {
+				l3 = new Node(sum);
+				curr = l3;
+			} else {
+				curr.next = new Node(sum);
+				curr = curr.next;
 			}
+
+			l1 = l1 != null? l1.next : null;
+			l2 = l2 != null ? l2.next : null;
 		}
-		Node newHead = null;
-		newHead = addrecursively(head1, head2);
-		return newHead;
+
+		if(car == 1)
+			curr.next = new Node(1);
+
+		return l3;
 	}
 	
 	private Node addrecursively(Node head1, Node head2) {

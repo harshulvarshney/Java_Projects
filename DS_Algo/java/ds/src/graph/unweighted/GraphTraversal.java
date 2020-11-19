@@ -1,9 +1,7 @@
-package graph;
+package graph.unweighted;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.Stack;
 
 
 public class GraphTraversal {
@@ -47,9 +45,9 @@ public class GraphTraversal {
 	
 	public static void main(String[] args) {
 		Graph g = Graph.getGraph();
-		//printBFS(g, 0);
-		boolean[] visited = new boolean[g.V];
-		printDFS(g, 1, visited);
+		printBFS(g, 0);
+		boolean[] visited = new boolean[g.vertices];
+		//printDFS(g, 1, visited);
 	}
 
 }

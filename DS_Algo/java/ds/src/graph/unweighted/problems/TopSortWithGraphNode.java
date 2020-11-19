@@ -1,6 +1,6 @@
-package graph.problems;
+package graph.unweighted.problems;
 
-import graph.GraphNode;
+import graph.unweighted.GraphNode;
 
 import java.util.List;
 import java.util.Stack;
@@ -21,7 +21,7 @@ import java.util.Stack;
  * for example, if n4 is passed as input, it will return all the nodes in answer (4,2,5,1,3,6,7)
  * but it n1 is passed as input, only the nodes reachable from 1 will be returned (1,3,6,7)
  */
-public class TopSortWithDFS {
+public class TopSortWithGraphNode {
 
     Stack<GraphNode> stack = new Stack<>();
     public void topSort(GraphNode node) {
@@ -40,7 +40,7 @@ public class TopSortWithDFS {
 
     public static void main(String[] args) {
         GraphNode n = GraphNode.getDAG();
-        TopSortWithDFS obj = new TopSortWithDFS();
+        TopSortWithGraphNode obj = new TopSortWithGraphNode();
         obj.topSort(n);
         while(!obj.stack.isEmpty()) {
             System.out.print(obj.stack.pop().val + ",");

@@ -1,7 +1,7 @@
-package graph.problems;
+package graph.unweighted.problems;
 
-import graph.AdjacencyListPrinter;
-import graph.Graph;
+import graph.unweighted.AdjacencyListPrinter;
+import graph.unweighted.Graph;
 
 public class FindConnectedComponents {
 	

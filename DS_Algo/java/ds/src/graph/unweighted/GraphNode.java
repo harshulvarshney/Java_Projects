@@ -1,4 +1,4 @@
-package graph;
+package graph.unweighted;
 
 import java.util.*;
 import java.util.stream.Collectors;

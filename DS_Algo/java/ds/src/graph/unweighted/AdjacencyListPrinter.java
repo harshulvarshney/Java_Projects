@@ -1,9 +1,9 @@
-package graph;
+package graph.unweighted;
 
 public class AdjacencyListPrinter {
 	
 	public static void print(Graph g) {
-		int n = g.V;
+		int n = g.vertices;
 		
 		for(int i = 0; i < n; i++) {
 			System.out.print(i);
