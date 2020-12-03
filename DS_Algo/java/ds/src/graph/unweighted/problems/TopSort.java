@@ -6,6 +6,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Stack;
 
+
+/**
+ * This is sorting algo for Directed Acyclic Graph.
+ */
 public class TopSort {
 
     private static Stack<Integer> stack;

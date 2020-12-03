@@ -10,10 +10,12 @@ import java.util.Map;
  * SSSP = Single Source Shortest Path
  * find the shortest path from a source to all the other nodes
  *
- * this solution is based on top sort.
+ * this solution is based on top sort, its time complexity : O(E+V)
+ * Dijkstra is better then this solution because time complexity is: O(E+log(V))
  *
+ * NOTE: O(log n) is better then O(n)
  */
-public class SSSP {
+public class DynamicSSSP {
 
     public Integer[] getPath(Map<Integer, List<WeightedGraph.Edge>> g, int source) {
 
@@ -44,7 +46,7 @@ public class SSSP {
     }
 
     public static void main(String[] args) {
-        SSSP obj = new SSSP();
+        DynamicSSSP obj = new DynamicSSSP();
         System.out.println("below distance is in sequence 0 to 5, not as per sorted order");
         System.out.println(Arrays.toString(obj.getPath(WeightedGraph.getDAG(), 0)));
     }

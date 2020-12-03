@@ -51,7 +51,7 @@ public class BTreeFactory {
 
         n23.right = n33;
         
-        n33.left = new Node(99);
+//        n33.left = new Node(99);
         
         BTreePrinter.printNode(root);
         return root;

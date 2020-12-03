@@ -8,7 +8,8 @@ import java.util.Map;
 import java.util.Stack;
 
 /**
- * it doesnt need edge weights, its only a sorting algo.
+ * This is sorting algo for Directed Acyclic Graph.
+ * it doesn't need edge weights, its only a sorting algo.
  *
  * This algo DFS with an extra stack. So time complexity is the same as DFS which is: O(V+E)
  *

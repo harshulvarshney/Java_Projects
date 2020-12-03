@@ -8,7 +8,9 @@ import java.util.*;
  * In Single Source Shortest Path problem for un-weighted graph
  * we can assume that weight of each edge is 1
  *
- * remember>> for unweighted graph shortest path problem: user BFS
+ * remember>> for unweighted graph shortest path problem: use BFS
+ *
+ * below is a modified BFS solution, time complexity:  O(V + E)
  */
 public class SSSP {
 
@@ -17,7 +19,7 @@ public class SSSP {
         Queue<Integer> q = new LinkedList();
         int[] distance = new int[graph.size()];
         int[] path = new int[graph.size()];
-        for(int i=0; i< distance.length; i++) distance[i] = -1;
+        Arrays.fill(distance, -1);
         distance[s] = 0;
         q.offer(s);
 
