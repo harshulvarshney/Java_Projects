@@ -52,7 +52,7 @@ public class SparseTable {
         for(int i=0; i<arr.length; i++) dp[0][i] = arr[i];
 
         for(int i=1; i<=p; i++) {
-            for(int j=0; j+(1<<i)<=arr.length; j++) {
+            for(int j=0; j+(1<<i)<arr.length; j++) {
                 dp[i][j] = Math.min( dp[i-1][j], dp[i-1][j + (1 << (i-1))]);
             }
         }
