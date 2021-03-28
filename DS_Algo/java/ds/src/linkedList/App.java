@@ -1,7 +1,5 @@
 package linkedList;
 
-import java.util.LinkedList;
-
 public class App {
 	
 	static void findLoop(Node s) {
@@ -37,7 +35,6 @@ public class App {
 
 		//print(y);
 
-		print(reverse(y));
 	}
 	
 	public static void print(Node x) {

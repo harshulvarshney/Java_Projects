@@ -9,19 +9,15 @@ package com.java8.thread;
 public class DemoJoin {
 	
 	public static void main(String[] args) {
-		Thread t = new Thread(new Runnable() {
-			
-			@Override
-			public void run() {
-				System.out.println(Thread.currentThread().getName() + " is running");
-				try {
-					Thread.sleep(5000);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				System.out.println(Thread.currentThread().getName() + " is complete");
+		Thread t = new Thread(() -> {
+			System.out.println(Thread.currentThread().getName() + " is running");
+			try {
+				Thread.sleep(5000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
+			System.out.println(Thread.currentThread().getName() + " is complete");
 		});
 		t.setName("t");
 		t.start();

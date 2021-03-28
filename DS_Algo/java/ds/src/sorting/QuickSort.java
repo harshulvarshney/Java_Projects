@@ -30,35 +30,98 @@ import java.util.Arrays;
 public class QuickSort {
 
 	public static void main(String[] args) {
-		int[] a = {9,8,-1,3,2,1,99};
+		int[] a = {9,8,-1,3,2,1,99,0,5,7,-2,0};
+
+		// 1- original quick sort algo
+		//quickSort(a, 0, a.length-1);
 		quickSort(a, 0, a.length-1);
 		System.out.println(Arrays.toString(a));
+
+		// 2- sort an array containing 0, 1s and 2s
+		int[] arr = {2,0,1,0,0,1,1,1,0};
+		sort0_1_2(arr);
+		System.out.println(Arrays.toString(arr));
 	}
-	
-	static void quickSort(int[] a, int low, int high) {
-		if(a == null || a.length == 0)
+
+	public static void sort(int[] arr, int low, int high) {
+		if(arr == null || arr.length == 0 || low >= high)
 			return;
-		
-		if(low >= high)
-			return;
-		
-		int mid = low+(high-low)/2;
-		int pivot = a[mid];
-		int i = low; int j = high;
-		while(i <= j) {
-			while(a[i] < pivot)
+
+		int i = low;
+		int j = high;
+		int pivot = arr[low + (high-low)/2];
+		while(i < j) {
+			while(arr[i] < pivot)
 				i++;
-			while(pivot < a[j])
+			while(pivot < arr[j])
 				j--;
-			if(i <= j) {
-				int t = a[i];
-				a[i] = a[j];
-				a[j] = t;
+			if(i < j) {
+				int temp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = temp;
 				i++;
 				j--;
 			}
 		}
-		quickSort(a, low, j);
-		quickSort(a, i, high);
+
+		sort(arr, low, i-1);
+		sort(arr, j+1, high);
 	}
+	public static void quickSort(int[] arr, int low, int high) {
+		if(arr == null || arr.length == 0 || low >= high)
+			return;
+
+		int i = low;
+		int j = high;
+		int mid = low + (high - low)/2;
+		int p = arr[mid];
+		while(i < j) {
+			while(arr[i] < p)
+				i++;
+
+			while(p < arr[j])
+				j--;
+
+			if(i < j) {
+				int t = arr[i];
+				arr[i] = arr[j];
+				arr[j] = t;
+				i++;
+				j--;
+			}
+		}
+
+		sort(arr, low, i-1);
+		sort(arr, j, high);
+	}
+
+
+	private static void sort0_1_2(int [] a) {
+		int lo = 0;
+		int hi = a.length-1;
+		int index = 0;
+
+		while(index <= hi) {
+			switch (a[index]) {
+				case 0:
+					int t = a[lo];
+					a[lo] = a[index];
+					a[index] = t;
+					lo++;
+					index++;
+					break;
+				case 1:
+					index++;
+					break;
+				case 2:
+					int y = a[hi];
+					a[hi] = a[index];
+					a[index] = y;
+					hi--;
+					break;
+			}
+		}
+	}
+
+
 }

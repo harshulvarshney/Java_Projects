@@ -13,25 +13,24 @@ public class ShareMarket1T {
      * this can be dne by identifying the lowest price
      * and then find the profit by calculating diff between a price and all-time-low price
      */
-    private static int findmaxProfit(int[] prices) {
-
-        if(prices == null || prices.length == 0 || prices.length == 1)
-            return 0;
-        int highestProfit = -1;
-        int allTimeLow = Integer.MAX_VALUE;
-
-        for(int i=0; i<prices.length; i++) {
-            allTimeLow = Math.min(allTimeLow, prices[i]);
-            int diff = prices[i] - allTimeLow;
-            if(diff > highestProfit)
-                highestProfit = diff;
-        }
-
-        return highestProfit;
+    public static void main(String[] args) {
+        int[] prices = {4,3,2,1,10,3,4,7,9};
+        System.out.println("Max profit: " + maxProfitInOneTx(prices));
     }
 
-    public static void main(String[] args) {
-        int[] prices = {4,3,2,1};
-        System.out.println("Max profit: " + findmaxProfit(prices));
+    public static int maxProfitInOneTx(int[] prices) {
+
+        int max = -1;
+        if(prices == null || prices.length == 0)
+            return max;
+
+        int globalMin = prices[0];
+        for(int i=1; i<prices.length; i++) {
+            int profit = prices[i] - globalMin;
+            max = Math.max(max, profit);
+            globalMin = Math.min(globalMin, prices[i]);
+        }
+
+        return max;
     }
 }

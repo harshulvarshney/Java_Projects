@@ -24,8 +24,9 @@ public class ComplexCase {
 		});
 		
 		t1.setName("t1");
-		t2.setName("t2");
+
 		t1.start();
+		t2.setName("t2");
 		t2.start();
 	}
 

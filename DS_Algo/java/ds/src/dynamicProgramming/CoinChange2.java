@@ -10,8 +10,26 @@ public class CoinChange2 {
     public static void main(String[] args) {
         int [] coins = {1,2,5};
         int t = 5;
-        System.out.println(dp(coins, t));
+        System.out.println(dp2(coins, t));
         System.out.println(effecientDp(coins, t));
+    }
+
+    private static int dp2(int[] coins, int t) {
+        int n = coins.length;
+        int[][] dp = new int[n+1][t+1];
+
+        for(int i=0; i<dp.length; i++) {
+            for(int j=0; j<dp[0].length; j++) {
+                if(j == 0)
+                    dp[i][j] = 1;
+                else if(i == 0)
+                    dp[i][j] = 0;
+                else
+                    dp[i][j] = (j-coins[i-1] >= 0) ? dp[i][j-coins[i-1]] + dp[i-1][j] : dp[i-1][j];
+            }
+        }
+
+        return dp[n][t];
     }
 
     private static int dp(int[] coins, int t) {

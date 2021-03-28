@@ -22,13 +22,18 @@ import java.util.Arrays;
 public class CountingSort {
 	
 	public static void main(String[] args) {
-		char[] arr = {'w','z','b','a','c'};
+		char[] arr = {'w','z','b','a','c','#'};
 		sort(arr);
+		int[] arr1 = {2,2,2,2};
+		System.out.println(Arrays.toString(sort(arr1)));
+
+		int[] arr2 = {1,-2,0,-2,4,5,-1};
+		System.out.println(Arrays.toString(sortArrayWithNegatives(arr2)));
 	}
 	
 	static void sort(char[] arr) {
 		int n = arr.length;
-		int[] aux = new int[256];
+		int[] aux = new int[256];//there are 256 characters in ASCII code
 		char[] op = new char[n];
 		
 		for(char c : arr) {
@@ -46,7 +51,75 @@ public class CountingSort {
 		
 		System.out.println(Arrays.toString(op));
 	}
-	
+
+	/**
+	 * input array contains 0, 1s and 2s only
+	 */
+	static int[] sort(int[] arr) {
+		int count0 = 0;
+		int count1 = 0;
+		//int count2 = 0;
+		for(int x: arr) {
+			if(x == 0)
+				count0++;
+			else if(x == 1)
+				count1++;
+			/*else
+				count2++;*/
+		}
+
+		for(int i=0; i<arr.length; i++) {
+			if(count0 > 0) {
+				arr[i] = 0;
+				count0--;
+				continue;
+			}
+			else if(count1 > 0) {
+				arr[i] = 1;
+				count1--;
+				continue;
+			}
+			else {
+				arr[i] = 2;
+			}
+
+		}
+
+		return arr;
+	}
+
+	/**
+	 * when input array contains -ve int
+	 */
+	static int[] sortArrayWithNegatives(int[] arr) {
+		if(arr == null || arr.length == 0)
+			return arr;
+
+		int max = Arrays.stream(arr).max().getAsInt();
+		int min = Arrays.stream(arr).min().getAsInt();
+		int range = max-min+1;
+		int n = arr.length;
+
+		int[] count = new int[range];
+		int[] op = new int[n];
+
+		for(int i=0; i<n; i++) {
+			int index = arr[i]-min;
+			++count[index];
+		}
+
+		for(int i=1; i<range; i++) {
+			count[i] = count[i] + count[i-1];
+		}
+
+		for(int i=0; i<n; i++) {
+			int index = arr[i]-min;
+			op[count[index]-1] = arr[i];
+			--count[index];
+		}
+
+		return op;
+	}
 	
 
 }

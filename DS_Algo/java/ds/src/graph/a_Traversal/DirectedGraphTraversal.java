@@ -3,6 +3,7 @@ package graph.a_Traversal;
 import graph.Graph;
 
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 /**
@@ -15,14 +16,14 @@ public class DirectedGraphTraversal {
         Graph graph = new Graph(v);
 
         graph.add(0, 1, 0);
-        graph.add(0, 3, 0);
+        graph.add(0, 5, 0);
 
         graph.add(1, 2, 0);
 
         graph.add(2, 3, 0);
-        //graph.add(2, 5, 0);
+        graph.add(2, 5, 0);
 
-        //graph.add(3, 4, 0);
+        graph.add(3, 4, 0);
 
         graph.add(4, 5, 0);
 
@@ -53,6 +54,7 @@ public class DirectedGraphTraversal {
             }
         }
     }
+
 
     public static void bfs(Graph graph, int s) {
 

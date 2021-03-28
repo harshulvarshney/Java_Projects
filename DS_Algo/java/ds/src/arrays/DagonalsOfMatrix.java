@@ -7,38 +7,38 @@ package arrays;
  */
 public class DagonalsOfMatrix {
 
-	private int[][] m = {{1,2,3,4},{5,6,7,8},{9,10,11,12},{13,14,15,16}};
 	public static void main(String[] s) {
-		DagonalsOfMatrix obj = new DagonalsOfMatrix();
-		System.out.println();
-		
-		int len = obj.m.length;
-		obj.diagonals(len, obj.m);
-		s[0].intern();
+		int[][] m = {{1,2,3,4},{5,6,7,8},{9,10,11,12},{13,14,15,16}};
+
+		printDiagonals(m);
 	}
-	
-	
-	private void diagonals(int index, int[][] m) {
-		int r = 0;
-		while(r < index) {
-			int j = r;
-			for(int i =0; i<=r ; i++) {
-				System.out.print(m[i][j] + " ");
-				j--;
+
+	private static void printDiagonals(int[][] a) {
+		if(a == null || a.length == 0 || a[0].length == 0)
+			return;
+
+		int m = a.length;
+		int n = a[0].length;
+		int x = 0; int y = 0;
+		//loop-1
+		for(int i=0; i<n; i++) {
+			x = 0;
+			y = i;
+			while(y >= 0) {
+				System.out.print(a[x++][y--]);
 			}
 			System.out.println();
-			r++;
 		}
-		
-		r = 1;
-		while(r < index) {
-			int j = index-1;
-			for(int i = r; i < index ; i++) {
-				System.out.print(m[r][j] + " ");
-				j--;
+
+
+		//loop-2
+		for(int i=1; i<m; i++) {
+			x = i;
+			y = n-1;
+			while(x < m) {
+				System.out.print(a[x++][y--]);
 			}
 			System.out.println();
-			r++;
 		}
 	}
 }
