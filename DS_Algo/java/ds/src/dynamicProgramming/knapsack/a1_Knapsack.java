@@ -1,11 +1,11 @@
-package dynamicProgramming;
+package dynamicProgramming.knapsack;
 
 import java.util.Arrays;
 
 /**
  * https://www.youtube.com/watch?v=aL6cU5dWmWM&list=PLSIpQf0NbcClDpWE58Y-oSJro_W3LO8Nb&index=4
  */
-public class Knapsack {
+public class a1_Knapsack {
 
     public static void main(String[] args) {
         int[] values = {150, 300, 200};
@@ -25,14 +25,14 @@ public class Knapsack {
         System.out.println("dp :: " + Arrays.deepToString(dp));
     }
 
-    private static int recursive(int[] v, int[] wt, int i, int c) {
-        if(i == 0 || c <= 0)
+    private static int recursive(int[] v, int[] wt, int n, int c) {
+        if(n == 0 || c <= 0)
             return 0;
 
-        if(wt[i-1] > c)
-            return recursive(v, wt, i-1, c);
+        if(wt[n-1] > c)
+            return recursive(v, wt, n-1, c);
 
-        return Math.max((v[i-1] + recursive(v, wt, i-1, c-wt[i-1])), recursive(v, wt, i-1, c));
+        return Math.max((v[n-1] + recursive(v, wt, n-1, c-wt[n-1])), recursive(v, wt, n-1, c));
     }
 
     static int[][] cache;

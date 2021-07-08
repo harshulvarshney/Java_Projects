@@ -4,6 +4,18 @@ import java.util.Deque;
 import java.util.LinkedList;
 
 public class Problems {
+
+	static Integer prev = Integer.MIN_VALUE;
+	static boolean validBst(Node<Integer> root) {
+		if(root == null)
+			return true;
+
+		boolean left = validBst(root.left);
+		if(!left || prev > root.data)
+			return false;
+		prev = root.data;
+		return validBst(root.right);
+	}
 	
 	/**
 	 * Check if a given array can represent pre-order Traversal of Binary Search Tree

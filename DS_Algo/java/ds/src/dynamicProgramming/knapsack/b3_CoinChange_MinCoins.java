@@ -1,4 +1,4 @@
-package dynamicProgramming;
+package dynamicProgramming.knapsack;
 
 /**
  * https://leetcode.com/problems/coin-change/submissions/
@@ -25,7 +25,7 @@ package dynamicProgramming;
  * Input: coins = [1], amount = 0
  * Output: 0
  */
-public class CoinChange {
+public class b3_CoinChange_MinCoins {
 
     public static void main(String[] args) {
 

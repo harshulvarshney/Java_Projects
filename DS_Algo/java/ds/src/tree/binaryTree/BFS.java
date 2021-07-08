@@ -1,6 +1,8 @@
 package tree.binaryTree;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 import tree.BTreeFactory;
@@ -10,7 +12,7 @@ import tree.Node;
  * 	Take a Empty Queue.
 	Start from the root, insert the root into the Queue.
 	Now while Queue is not empty,
-		Extract the node from the Queue and insert all its chil­dren into the Queue.
+		Extract the node from the Queue and insert all its chilï¿½dren into the Queue.
 		Print the extracted node.
 		
  * @author harshul.varshney
@@ -23,14 +25,18 @@ public class BFS {
 			return;
 		
 		Queue<Node<Integer>> q = new LinkedList<>();
-		q.add(root);
+		q.offer(root);
+		q.offer(null);
 		Node<Integer> n = null;
+		boolean invert = true;
+		List<List<Integer>> resp = new ArrayList<>();
+		List<Integer> level = new ArrayList<>();
 		while(!q.isEmpty()) {
 			n = q.poll();
 			if(n.left != null)
-				q.add(n.left);
+				q.offer(n.left);
 			if(n.right != null)
-				q.add(n.right);
+				q.offer(n.right);
 			
 			System.out.print(n.data + ", ");
 		}
