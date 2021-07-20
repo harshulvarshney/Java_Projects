@@ -56,6 +56,7 @@ public class ReverseLinkedList {
 			System.out.print(x.data + " -> ");
 			x = x.next;
 		}
+		System.out.println();
 	}
 
 }

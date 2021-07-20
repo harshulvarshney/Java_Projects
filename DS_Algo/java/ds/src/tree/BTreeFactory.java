@@ -44,14 +44,19 @@ public class BTreeFactory {
         n11.left = n21;
         n11.right = n22;
 
-        n12.right = n23;
+//        n12.right = n23;
         
         n22.left = n31;
         n22.right = n32;
 
-        n23.right = n33;
-        
-//        n33.left = new Node(99);
+        n21.left = new Node(5);
+        n21.right = new Node(11);
+        n21.right.left = new Node(12);
+//        n23.right = n33;
+
+        n31.right = new Node(13);
+        n31.right.left = new Node(14);
+//        n33.left = new Node(9);
         
         BTreePrinter.printNode(root);
         return root;

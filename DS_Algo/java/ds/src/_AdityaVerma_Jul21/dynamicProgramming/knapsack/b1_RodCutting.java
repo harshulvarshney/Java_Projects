@@ -9,6 +9,9 @@ package _AdityaVerma_Jul21.dynamicProgramming.knapsack;
  * --------------------------------------------
  * price    | 1   5   8   9  10  17  17  20
  * Sol: 22
+ *
+ * hint: this is unbounded knapsack because we can chose the same piece
+ * size multiple times
  */
 public class b1_RodCutting {
 
