@@ -19,7 +19,7 @@ import java.util.LinkedList;
 public class NextLargestElement {
 
     public static void main(String[] args) {
-        int[] arr = {4, 5, 2, 25};
+        int[] arr = {4, 5, 2, 25, 2};
         System.out.println(Arrays.toString(solve(arr)));
     }
 

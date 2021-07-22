@@ -13,8 +13,22 @@ public class b2_CoinChange_MaxWays {
 
     public static void main(String[] args) {
         int[] den = {1, 2, 5};
-        int target = 5;
+        int target = 7;
         System.out.println("Max ways: " + findMaxWays(den, target));
+    }
+
+    static int maxWaysRec(int[] coins, int n, int t) {
+        if(t == 0)
+            return 1;
+        else if(n == 0)
+            return 0;
+
+        if(coins[n-1] <= t) {
+            return maxWaysRec(coins, n, t-coins[n-1]) + maxWaysRec(coins, n-1, t);
+        }
+        else {
+            return maxWaysRec(coins, n-1, t);
+        }
     }
 
     static int findMaxWays(int[] den, int target) {

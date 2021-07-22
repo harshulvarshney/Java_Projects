@@ -17,7 +17,24 @@ public class b1_RodCutting {
 
     public static void main(String[] args) {
         int[] prices = {1, 5, 8, 9, 10, 17, 17, 20};
+
+        int[] arr = new int[prices.length];
+        for(int i=0; i<prices.length; i++) {
+            arr[i] = i+1;
+        }
+
+        System.out.println("Max prfit recursive :: " + maxProfitRec(arr, prices, arr.length, arr.length));
         System.out.println("MAx profit: " + dp(prices));
+    }
+
+    static int maxProfitRec(int[] arr, int[] prices, int n, int l) {
+        if(n == 0)
+            return 0;
+
+        if(arr[n-1] <= l)
+            return Math.max(prices[n-1] + maxProfitRec(arr, prices, n, l-(arr[n-1])), maxProfitRec(arr, prices, n-1, l));
+        else
+            return maxProfitRec(arr, prices, n-1, l);
     }
 
     static int dp(int[] prices) {
