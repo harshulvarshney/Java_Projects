@@ -3,7 +3,7 @@ package _AdityaVerma_Jul21.recursion;
 import tree.BTreeFactory;
 import tree.Node;
 
-public class a2_HeighOfBinaryTree {
+public class b2_HeighOfBinaryTree {
 
     public static void main(String[] args) {
         Node root = BTreeFactory.getBinaryTree();

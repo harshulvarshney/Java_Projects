@@ -69,9 +69,9 @@ public class BTreeFactory {
         Node<Integer> n21 = new Node<Integer>(8);
         Node<Integer> n22 = new Node<Integer>(3);
         Node<Integer> n23 = new Node<Integer>(15);
-        Node<Integer> n31 = new Node<Integer>(0);
+        /*Node<Integer> n31 = new Node<Integer>(0);
         Node<Integer> n32 = new Node<Integer>(4);
-        Node<Integer> n33 = new Node<Integer>(20);
+        Node<Integer> n33 = new Node<Integer>(20);*/
 
         root.left = n11;
         root.right = n12;
@@ -81,11 +81,11 @@ public class BTreeFactory {
 
         n12.right = n23;
         
-        n22.left = n31;
+        /*n22.left = n31;
         n22.right = n32;
 
-        n23.right = n33;
-        n23.left = new Node(13);
+        n23.right = n33;*/
+//        n23.left = new Node(13);
         
         BTreePrinter.printNode(root);
         return root;

@@ -1,5 +1,7 @@
 package _AdityaVerma_Jul21.dynamicProgramming;
 
+import java.util.Arrays;
+
 /**
  * https://www.youtube.com/watch?v=ge_Fv2ZQAaE
  *
@@ -7,25 +9,37 @@ package _AdityaVerma_Jul21.dynamicProgramming;
  */
 public class HouseRobber {
 
-    static int[] cache;
+    //static int[] cache;
     public static void main(String[] args) {
-        int[] inp = {1, 3, 8, 4, 2, 1};
-        cache = new int[inp.length];
-        System.out.println(findMax(inp));
+        int[] inp = {2,7,9,3,1};
+        //cache = new int[inp.length];
+        System.out.println(maxCashRec(inp, inp.length, 0));
+
+
+        int[] t = new int[inp.length+1];
+        Arrays.fill(t, -1);
+        System.out.println(maxCashMem(inp, inp.length, 0, t));
+
+
+
+        // house robber-r: https://leetcode.com/problems/house-robber-ii/solution/
     }
 
-    private static int findMax(int[] v) {
-        if(v.length == 0)
-            return 0 ;
+    static int maxCashRec(int[] arr, int n, int max) {
+        if(n <= 0)
+            return max;
 
-        cache[0] = v[0];
-        cache[1] = Math.max(v[0], v[1]);
+        return Math.max(maxCashRec(arr, n-2, max+arr[n-1]), maxCashRec(arr, n-1, max));
+    }
 
-        for(int i=2; i<v.length; i++) {
-            cache[i] = Math.max(v[i] + cache[i-2], cache[i-1]);
-        }
+    static int maxCashMem(int[] arr, int n, int max, int[] t) {
+        if(n <= 0)
+            return max;
 
-        return cache[v.length-1];
+        if(t[n] != -1)
+            return t[n];
+
+        return Math.max(maxCashMem(arr, n-2, max+arr[n-1], t), maxCashMem(arr, n-1, max, t));
     }
 
     private static int findMaxEffecient(int[] inp) {
@@ -43,3 +57,4 @@ public class HouseRobber {
         return resp;
     }
 }
+

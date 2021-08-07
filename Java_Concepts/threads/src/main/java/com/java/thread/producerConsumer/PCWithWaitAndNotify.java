@@ -48,7 +48,7 @@ public class PCWithWaitAndNotify {
 				for(int i = 0; i<5; i++)
 					produce();
 			} catch (InterruptedException e) {
-//				Thread.currentThread().interrupt();
+				Thread.currentThread().interrupt();
 			}
 		}
 		

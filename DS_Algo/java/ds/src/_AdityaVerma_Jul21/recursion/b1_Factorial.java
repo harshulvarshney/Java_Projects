@@ -4,7 +4,7 @@ package _AdityaVerma_Jul21.recursion;
  * Calculate the factorial of a number n by using
  * Base Condition + Induction + Hypothesis method by Aditya Verma
  */
-public class a1_Factorial {
+public class b1_Factorial {
 
     public static void main(String[] args) {
         int n = 0;

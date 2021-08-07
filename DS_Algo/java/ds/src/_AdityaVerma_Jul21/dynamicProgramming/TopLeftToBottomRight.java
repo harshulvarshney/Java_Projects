@@ -12,8 +12,17 @@ package _AdityaVerma_Jul21.dynamicProgramming;
 public class TopLeftToBottomRight {
 
     public static void main(String[] args) {
-        System.out.println("Possible ways =" + dynamic(7, 9));
-        System.out.println("Possible ways =" + efficient(7, 9));
+
+        System.out.println(recursive(3-1, 3-1));
+        System.out.println("Possible ways =" + dynamic(3, 3));
+//        System.out.println("Possible ways =" + efficient(7, 9));
+    }
+
+    static int recursive(int m, int n) {
+        if(m == 0 || n == 0)
+            return 1;
+
+        return recursive(m-1, n) + recursive(m, n-1);
     }
 
     private static int dynamic(int m, int n) {

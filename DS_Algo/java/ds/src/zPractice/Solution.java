@@ -1,51 +1,76 @@
 package zPractice;
 
-import java.util.Arrays;
+
+import java.util.*;
 
 public class Solution {
 
     public static void main(String[] args) {
-        int[] coins = {1,2,4};
-        int amount = 11;
+        /*Node x = new Node(1);
+        x.next = new Node(2);
+        x.next.next = new Node(3);
+        x.next.next.next = new Node(4);
+        x.next.next.next.next = new Node(5);
+        x.next.next.next.next.next = new Node(6);*/
 
-        System.out.println("Rec sol :: " + (int)minCoins(coins, amount, coins.length));
 
-        int[][] t = new int[coins.length+1][amount+1];
-        for(int[] i: t) {
-            Arrays.fill(i, -1);
-        }
-        System.out.println("memoized Sol:: " + minCoinsMemoized(coins, amount, coins.length, t));
+        int [] arr = {5, 1, 4, 2, 3};
+
+        sol();
     }
 
-    static double minCoins(int[] arr, int sum, int n) {
-        if(sum == 0)
-            return 0;
-        else if(n == 0)
-            return Double.POSITIVE_INFINITY;
+    static class Edge {
+        int from;
+        int to;
+        int weight;
 
-        if(arr[n-1] <= sum)
-            return Math.min(1 + minCoins(arr, sum-arr[n-1], n), minCoins(arr, sum, n-1));
-        else
-            return minCoins(arr, sum, n-1);
-    }
-
-    static int minCoinsMemoized(int[] arr, int sum, int n, int[][] t) {
-        if(sum == 0)
-            return 0;
-        else if(n == 0)
-            return Integer.MAX_VALUE;
-
-        if(t[n][sum] != -1)
-            return t[n][sum];
-
-        if(arr[n-1] <= sum) {
-            t[n][sum] = Math.min(1 + minCoinsMemoized(arr, sum - arr[n - 1], n, t), minCoinsMemoized(arr, sum, n - 1, t));
-            return t[n][sum];
+        public Edge(int _from, int _to, int _weight) {
+            this.from = _from;
+            this.to = _to;
+            this.weight = _weight;
         }
-        else {
-            t[n][sum] = minCoinsMemoized(arr, sum, n - 1, t);
-            return t[n][sum];
+
+        @Override
+        public String toString() {
+            return "-->"+to+"";
         }
     }
+
+    static Map<Integer, List<Edge>> graph;
+
+    static void sol() {
+        int v = 6;
+        graph = new HashMap<>();
+        for(int i=0; i<v; i++) {
+            graph.put(i, new LinkedList<>());
+        }
+
+        graph.get(0).add(new Edge(0, 1, 4));
+        graph.get(0).add(new Edge(0, 2, 3));
+
+        graph.get(1).add(new Edge(1, 3, 3));
+        graph.get(1).add(new Edge(1, 2, 1));
+
+        graph.get(2).add(new Edge(2, 3, 1));
+        graph.get(2).add(new Edge(2, 4, 3));
+
+        graph.get(3).add(new Edge(3, 5, 2));
+        graph.get(4).add(new Edge(4, 5, 6));
+
+        boolean[] visited = new boolean[v];
+        /*for(int i=0; i<v; i++) {
+            if(!visited[i])
+                dfs(graph, i, visited);
+        }*/
+
+        //dfsIterative(graph, 0);
+
+        bfs(graph, 0);
+    }
+
+    static int[] topSort(int n, int[][] c) {
+        
+    }
+
 
 }

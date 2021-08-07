@@ -13,7 +13,7 @@ import java.util.List;
  * To solve this problem use recursion,
  * and input-output method of recursion (build descision tree)
  */
-public class a3_PrintSubsets {
+public class b3_PrintSubsets {
 
     public static void main(String[] args) {
         int[] arr = {1, 2, 3};

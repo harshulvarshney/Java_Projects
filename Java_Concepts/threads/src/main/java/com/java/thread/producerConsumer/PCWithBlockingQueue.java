@@ -21,31 +21,22 @@ public class PCWithBlockingQueue {
 	static final BlockingQueue<Integer> q = new ArrayBlockingQueue<>(5);
 	
 	public static void main(String[] s) {
-		Thread t1 = new Thread(new Runnable() {
-			
-			@Override
-			public void run() {
-				try {
-					System.out.println("Running t1");
-					producer();
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+		Thread t1 = new Thread(() -> {
+			try {
+				System.out.println("Running t1");
+				producer();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		});
 		
-		Thread t2 = new Thread(new Runnable() {
-			
-			@Override
-			public void run() {
-				try {
-					System.out.println("Running t2");
-					consumer();
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+		Thread t2 = new Thread(() -> {
+			try {
+				System.out.println("Running t2");
+				consumer();
+			} catch (InterruptedException e) {
+				Thread.currentThread().interrupt();
 			}
 		});
 		

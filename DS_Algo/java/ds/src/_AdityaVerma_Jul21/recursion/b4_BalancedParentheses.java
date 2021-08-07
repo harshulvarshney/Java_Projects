@@ -11,7 +11,7 @@ import java.util.List;
  * n = 2
  * output: ()(), (())
  */
-public class a4_BalancedParentheses {
+public class b4_BalancedParentheses {
     public static void main(String[] args) {
         int n = 3;
         printBalanced(n);
