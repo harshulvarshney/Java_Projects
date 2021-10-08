@@ -1,21 +1,21 @@
 package tree.binaryTree;
 
 import tree.BTreeFactory;
-import tree.Node;
+import tree.TreeNode;
 
 public class MaxDepth {
 	
 	public static void main(String[] args) {
-		Node root = BTreeFactory.getBinaryTree();
+		TreeNode root = BTreeFactory.getBinaryTree();
 		MaxDepth o = new MaxDepth();
 		System.out.println(o.maxDepth(root));
 	}
 	
-	private int maxDepth(Node node) {
-		if(node == null)
+	private int maxDepth(TreeNode treeNode) {
+		if(treeNode == null)
 			return 0;
 		
-		return 1 + Math.max(maxDepth(node.left), maxDepth(node.right));
+		return 1 + Math.max(maxDepth(treeNode.left), maxDepth(treeNode.right));
 	}
 
 }

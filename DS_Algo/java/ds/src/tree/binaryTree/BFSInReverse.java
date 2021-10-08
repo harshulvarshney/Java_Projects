@@ -4,7 +4,7 @@ import java.util.Deque;
 import java.util.LinkedList;
 
 import tree.BTreeFactory;
-import tree.Node;
+import tree.TreeNode;
 
 public class BFSInReverse {
 	
@@ -13,25 +13,25 @@ public class BFSInReverse {
 		o.printInReverse(BTreeFactory.getTree());
 	}
 	
-	private void printInReverse(Node<Integer> root) {
+	private void printInReverse(TreeNode<Integer> root) {
 		q.offer(root);
 		
 		while(!q.isEmpty()) {
-			Node<Integer> n = q.poll();
+			TreeNode<Integer> n = q.poll();
 			stack.addFirst(n);
 			if(n.left != null) q.offer(n.left);
 			if(n.right != null) q.offer(n.right);
 		}
 		while(!stack.isEmpty()) {
-			Node n = stack.removeFirst();
-			System.out.print(n.data + " ");
+			TreeNode n = stack.removeFirst();
+			System.out.print(n.val + " ");
 		}
 	}
 	
-	private static Deque<Node<Integer>> stack = new LinkedList<>();
-	private static Deque<Node<Integer>> q = new LinkedList<>();
+	private static Deque<TreeNode<Integer>> stack = new LinkedList<>();
+	private static Deque<TreeNode<Integer>> q = new LinkedList<>();
 	
-	private void addNodesToStack(Node<Integer> root) {
+	private void addNodesToStack(TreeNode<Integer> root) {
 		if(root == null)
 			return;
 		stack.addFirst(root);

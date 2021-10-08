@@ -1,19 +1,16 @@
 package tree.binaryTree;
 
 import tree.BTreeFactory;
-import tree.Node;
-
-import java.util.LinkedList;
-import java.util.Queue;
+import tree.TreeNode;
 
 public class Practice {
 	
 	public static void main(String[] args) {
-		Node<Integer> root = BTreeFactory.getBinaryTree();
+		TreeNode<Integer> root = BTreeFactory.getBinaryTree();
 		System.out.println(min(root));
 	}
 	
-	static int min(Node root) {
+	static int min(TreeNode root) {
 		if(root == null)
 			return 0;
 		if(root.left == null && root.right == null)

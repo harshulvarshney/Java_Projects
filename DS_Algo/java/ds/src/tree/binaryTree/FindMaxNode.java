@@ -1,7 +1,7 @@
 package tree.binaryTree;
 
 import tree.BTreeFactory;
-import tree.Node;
+import tree.TreeNode;
 
 /**
  * Using recursion, find the max element.
@@ -17,9 +17,9 @@ public class FindMaxNode {
 		"text".contains("");
 	}
 
-	private int getMax(Node<Integer> root) {
+	private int getMax(TreeNode<Integer> root) {
 		if(root == null)
 			return -1;
-		return Math.max(Math.max(root.data, getMax(root.left)), Math.max(root.data, getMax(root.right)));
+		return Math.max(Math.max(root.val, getMax(root.left)), Math.max(root.val, getMax(root.right)));
 	} 
 }

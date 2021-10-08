@@ -3,13 +3,12 @@ package graph.a_Traversal;
 import graph.Graph;
 
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Queue;
 
 /**
  * dfs and bfs works same for both Directed & Undirected graphs
  */
-public class DirectedGraphTraversal {
+public class GraphTraversal {
 
     public static void main(String[] args) {
         int v = 6;
@@ -43,6 +42,10 @@ public class DirectedGraphTraversal {
             }
         }
 
+
+        int[][] matrix = {{1,1,0}, {1,1,0}, {0,0,1}};
+        System.out.println("find num of connected components");
+        traversalOnMatrix(matrix);
     }
 
     private static void dfs(Graph graph, int s, boolean[] visited) {
@@ -75,6 +78,29 @@ public class DirectedGraphTraversal {
             }
         }
 
+    }
+
+    static void traversalOnMatrix(int[][] g) {
+        int n = g.length;
+        boolean[] visited = new boolean[n];
+        Queue<Integer> q = new LinkedList<>();
+        int count = 0;
+        for(int i=0; i<n; i++) {
+            if(!visited[i]) {
+                q.offer(i);
+                while(!q.isEmpty()) {
+                    Integer t = q.poll();
+                    visited[t] = true;
+                    for(int j=0; j<g[0].length; j++) {
+                        if(g[i][j] == 1 && !visited[j]) {
+                            q.offer(j);
+                        }
+                    }
+                }
+                count++;
+            }
+        }
+        System.out.println(count);
     }
 
 }

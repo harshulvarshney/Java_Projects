@@ -1,15 +1,12 @@
 package tree.binaryTree;
 
 import tree.BTreeFactory;
-import tree.Node;
-
-import java.util.LinkedList;
-import java.util.Queue;
+import tree.TreeNode;
 
 
 public class Problem {
 
-	public static int deepestLeavesSum(Node<Integer> root) {
+	public static int deepestLeavesSum(TreeNode<Integer> root) {
 
 		int sum = 0;
 
@@ -20,19 +17,19 @@ public class Problem {
 		return sum(root, 0, depth-1);
 	}
 
-	private static int sum(Node<Integer> root, int level, int depth) {
+	private static int sum(TreeNode<Integer> root, int level, int depth) {
 		if(root == null)
 			return 0;
 
 		if(level == depth)
-			return root.data;
+			return root.val;
 
 		level++;
 
 		return sum(root.left, level, depth) + sum(root.right, level, depth);
 	}
 
-	private static int depth(Node root) {
+	private static int depth(TreeNode root) {
 		if(root == null)
 			return 0;
 
@@ -40,7 +37,7 @@ public class Problem {
 	}
 
 	public static void main(String[] args) {
-		Node<Integer> root = BTreeFactory.getBinaryTree();
+		TreeNode<Integer> root = BTreeFactory.getBinaryTree();
 		System.out.println(deepestLeavesSum(root));
 	}
 

@@ -1,10 +1,10 @@
 package tree.binaryTree;
 
+import tree.BTreeFactory;
+import tree.TreeNode;
+
 import java.util.Deque;
 import java.util.LinkedList;
-
-import tree.BTreeFactory;
-import tree.Node;
 
 /**
  * Contains Recursive and Non-Recursive approach for
@@ -18,17 +18,16 @@ import tree.Node;
 public class BTreeTraversal {
 
 	public static void main(String[] args) {
-		BTreeTraversal btree = new BTreeTraversal();
-		btree.postOrderIterative(BTreeFactory.getBinaryTree());
+		TreeNode<Integer> root = BTreeFactory.FourNodeTree();
 	}
-	
-	private void postorderRecursive(Node root) {
+
+	static void postorderRecursive(TreeNode root) {
 		if(root == null)
 			return;
 		
 		postorderRecursive(root.left);
 		postorderRecursive(root.right);
-		System.out.print(root.data+" | ");
+		System.out.print(root.val +" | ");
 	}
 	
 	/**
@@ -36,12 +35,12 @@ public class BTreeTraversal {
 	 * 2 stacks are used
 	 * @param root
 	 */
-	private void postOrderIterative(Node root) {
+	static void postOrderIterative(TreeNode root) {
 		if(root == null)
 			return;
 		
-		Deque<Node> stack1 = new LinkedList<>();
-		Deque<Node> stack2 = new LinkedList<>();
+		Deque<TreeNode> stack1 = new LinkedList<>();
+		Deque<TreeNode> stack2 = new LinkedList<>();
 		stack1.add(root);
 		
 		while(!stack1.isEmpty()) {
@@ -56,62 +55,57 @@ public class BTreeTraversal {
 		}
 		
 		while(!stack2.isEmpty()) {
-			System.out.print(stack2.pop().data+" | ");
+			System.out.print(stack2.pop().val +" | ");
 		}
 	}
-	
-	private void preorderRecursive(Node root) {
+
+	static void preorderRecursive(TreeNode root) {
 		if(root == null)
 			return;
 		
-		System.out.print(root.data+" | ");
+		System.out.print(root.val +" | ");
 		preorderRecursive(root.left);
 		preorderRecursive(root.right);
 	}
-	
-	private void preorderIterative(Node root) {
+
+	static void preorderIterative(TreeNode root) {
 		if(root == null)
 			return;
 		
-		Deque<Node> stack = new LinkedList<>();
+		Deque<TreeNode> stack = new LinkedList<>();
 		stack.push(root);
 		while(!stack.isEmpty()) {
 			root = stack.pop();
-			System.out.print(root.data+" | ");
+			System.out.print(root.val +" | ");
 			if(root.right != null)
 				stack.push(root.right);
 			if(root.left != null)
 				stack.push(root.left);
 		}
 	}
-	
-	private void inorderRecursive(Node<Integer> root) {
+
+	static void inorderRecursive(TreeNode<Integer> root) {
 		if(root == null)
 			return;
 		
 		inorderRecursive(root.left);
-		System.out.print(root.data+" | ");
+		System.out.print(root.val +" | ");
 		inorderRecursive(root.right);
 	}
 	
-	private void inorderIterative(Node<Integer> root) {
+	static void inorderIterative(TreeNode<Integer> root) {
 		if (root == null)
 			return;
-		Deque<Node<Integer>> s = new LinkedList<>();
-		
-		while(true) {
-			if(root != null) {
+		Deque<TreeNode<Integer>> s = new LinkedList<>();
+
+		while(root != null || !s.isEmpty()) {
+			while(root != null) {
 				s.push(root);
 				root = root.left;
 			}
-			else {
-				if(s.isEmpty())
-					break;
-				
-				root = s.pop();
-				System.out.print(root.data+" | ");
-				root = root.right;
-			}
+			root = s.pop();
+			System.out.print(root.val + ", ");
+			root = root.right;
 		}
 	}
 

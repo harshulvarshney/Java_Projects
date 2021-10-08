@@ -1,5 +1,7 @@
 package _AdityaVerma_Jul21.dynamicProgramming.LCS;
 
+import java.util.Arrays;
+
 /**
  * https://www.youtube.com/watch?v=x5hQvnUcjiM&list=PL_z_8CaSLPWekqhdCPmFohncHwz8TY2Go&index=23
  *
@@ -21,6 +23,20 @@ public class a3_PrintLongestCommonSubsequence {
         System.out.println("bottomUpDp :: " + t[x.length()][y.length()]);
 
         print(x, y, t);
+    }
+
+    // direct solution to pring lcs *******************
+    private String longestCommonSubSeq(String str1, String str2) {
+        String[][] dp = new String[str1.length() + 1][str2.length() + 1];
+        for (int i = 0; i < dp.length; i++)
+            Arrays.fill(dp[i], "");
+        for (int i = 1; i <= str1.length(); i++)
+            for (int j = 1; j <= str2.length(); j++)
+                if (str1.charAt(i-1) == str2.charAt(j-1))
+                    dp[i][j] = dp[i-1][j-1] + str1.charAt(i-1);
+                else
+                    dp[i][j] = dp[i-1][j].length()>dp[i][j-1].length() ?  dp[i-1][j] : dp[i][j-1];
+        return dp[str1.length()][str2.length()];
     }
 
     static int recursive(String x, String y, int n, int m) {
@@ -56,9 +72,10 @@ public class a3_PrintLongestCommonSubsequence {
                     j--;
                 } else if(t[i][j-1] > t[i-1][j]){
                     j--;
-                } else{
+                } else if(t[i][j-1] < t[i-1][j]){
                     i--;
-                }
+                } else
+                    break;
         }
         sb = sb.reverse();
         System.out.println(sb.toString());

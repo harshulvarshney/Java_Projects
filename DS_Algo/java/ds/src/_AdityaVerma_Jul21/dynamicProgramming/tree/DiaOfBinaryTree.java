@@ -1,11 +1,18 @@
 package _AdityaVerma_Jul21.dynamicProgramming.tree;
 
 import tree.BTreeFactory;
-import tree.Node;
+import tree.TreeNode;
 
+/**
+ * Given the root of a binary tree, return the length of the diameter of the tree.
+ *
+ * The diameter of a binary tree is the length of the longest path between any two nodes in a tree. This path may or may not pass through the root.
+ *
+ * The length of a path between two nodes is represented by the number of edges between them.
+ */
 public class DiaOfBinaryTree {
     public static void main(String[] args) {
-        Node root = BTreeFactory.getBinaryTree();
+        TreeNode root = BTreeFactory.getBinaryTree();
         System.out.println(maxDepth(root));
         System.out.println(getDia(root));
         height(root);
@@ -15,7 +22,7 @@ public class DiaOfBinaryTree {
     //below is a modified maxDepth function
     //this will help in getting the final result in 'dis' statis variable
     static int dia = 0;
-    static int height(Node root) {
+    static int height(TreeNode root) {
         //base condition
         if(root == null)
             return 0;
@@ -31,7 +38,7 @@ public class DiaOfBinaryTree {
 
     // this wd be (n2) solution because we are calculating the max depth on each node
     // we should use DP here to avoid calculating something which is already done.
-    static int getDia(Node root) {
+    static int getDia(TreeNode root) {
         if(root == null)
             return 0;
 
@@ -42,7 +49,7 @@ public class DiaOfBinaryTree {
         return Math.max(diaFromRoot, Math.max(getDia(root.left), getDia(root.right)));
     }
 
-    static int maxDepth(Node root) {
+    static int maxDepth(TreeNode root) {
         if(root == null)
             return 0;
 

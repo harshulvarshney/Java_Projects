@@ -1,20 +1,20 @@
 package tree.binaryTree;
 
+import tree.TreeNode;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import tree.Node;
-
 public class BTreePrinter {
-	public static <T extends Comparable<?>> void printNode(Node<T> root) {
+	public static <T extends Comparable<?>> void printNode(TreeNode<T> root) {
         int maxLevel = BTreePrinter.maxLevel(root);
 
         printNodeInternal(Collections.singletonList(root), 1, maxLevel);
     }
 
-    private static <T extends Comparable<?>> void printNodeInternal(List<Node<T>> nodes, int level, int maxLevel) {
-        if (nodes.isEmpty() || BTreePrinter.isAllElementsNull(nodes))
+    private static <T extends Comparable<?>> void printNodeInternal(List<TreeNode<T>> treeNodes, int level, int maxLevel) {
+        if (treeNodes.isEmpty() || BTreePrinter.isAllElementsNull(treeNodes))
             return;
 
         int floor = maxLevel - level;
@@ -24,15 +24,15 @@ public class BTreePrinter {
 
         BTreePrinter.printWhitespaces(firstSpaces);
 
-        List<Node<T>> newNodes = new ArrayList<Node<T>>();
-        for (Node<T> node : nodes) {
-            if (node != null) {
-                System.out.print(node.data);
-                newNodes.add(node.left);
-                newNodes.add(node.right);
+        List<TreeNode<T>> newTreeNodes = new ArrayList<TreeNode<T>>();
+        for (TreeNode<T> treeNode : treeNodes) {
+            if (treeNode != null) {
+                System.out.print(treeNode.val);
+                newTreeNodes.add(treeNode.left);
+                newTreeNodes.add(treeNode.right);
             } else {
-                newNodes.add(null);
-                newNodes.add(null);
+                newTreeNodes.add(null);
+                newTreeNodes.add(null);
                 System.out.print(" ");
             }
 
@@ -41,21 +41,21 @@ public class BTreePrinter {
         System.out.println("");
 
         for (int i = 1; i <= endgeLines; i++) {
-            for (int j = 0; j < nodes.size(); j++) {
+            for (int j = 0; j < treeNodes.size(); j++) {
                 BTreePrinter.printWhitespaces(firstSpaces - i);
-                if (nodes.get(j) == null) {
+                if (treeNodes.get(j) == null) {
                     BTreePrinter.printWhitespaces(endgeLines + endgeLines + i + 1);
                     continue;
                 }
 
-                if (nodes.get(j).left != null)
+                if (treeNodes.get(j).left != null)
                     System.out.print("/");
                 else
                     BTreePrinter.printWhitespaces(1);
 
                 BTreePrinter.printWhitespaces(i + i - 1);
 
-                if (nodes.get(j).right != null)
+                if (treeNodes.get(j).right != null)
                     System.out.print("\\");
                 else
                     BTreePrinter.printWhitespaces(1);
@@ -66,7 +66,7 @@ public class BTreePrinter {
             System.out.println("");
         }
 
-        printNodeInternal(newNodes, level + 1, maxLevel);
+        printNodeInternal(newTreeNodes, level + 1, maxLevel);
     }
 
     private static void printWhitespaces(int count) {
@@ -74,11 +74,11 @@ public class BTreePrinter {
             System.out.print(" ");
     }
 
-    private static <T extends Comparable<?>> int maxLevel(Node<T> node) {
-        if (node == null)
+    private static <T extends Comparable<?>> int maxLevel(TreeNode<T> treeNode) {
+        if (treeNode == null)
             return 0;
 
-        return Math.max(BTreePrinter.maxLevel(node.left), BTreePrinter.maxLevel(node.right)) + 1;
+        return Math.max(BTreePrinter.maxLevel(treeNode.left), BTreePrinter.maxLevel(treeNode.right)) + 1;
     }
 
     private static <T> boolean isAllElementsNull(List<T> list) {

@@ -3,8 +3,8 @@ package _AdityaVerma_Jul21.dynamicProgramming.LCS;
 public class a2_LongestCommonSubstring {
 
     public static void main(String[] args) {
-        String x = "aa1bcba";
-        String y = "abcbaaa";
+        String x = "abaxx";
+        String y = "xxaba";
 
         System.out.println("Recursive :: " + recursive(x, y, x.length(), y.length(), 0));
 

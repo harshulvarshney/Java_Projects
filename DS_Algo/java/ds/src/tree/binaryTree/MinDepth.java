@@ -1,7 +1,7 @@
 package tree.binaryTree;
 
 import tree.BTreeFactory;
-import tree.Node;
+import tree.TreeNode;
 
 /**
  * Find Minimum Depth of a Binary Tree
@@ -13,11 +13,11 @@ import tree.Node;
 public class MinDepth {
 	
 	public static void main(String[] args) {
-		Node<Integer> root = BTreeFactory.getBinaryTree();
+		TreeNode<Integer> root = BTreeFactory.getBinaryTree();
 		System.out.println(find(root));
 	}
 	
-	static int find(Node<Integer> root) {
+	static int find(TreeNode<Integer> root) {
 		if(root == null)
 			return 0;
 		if(root.left == null && root.right == null)

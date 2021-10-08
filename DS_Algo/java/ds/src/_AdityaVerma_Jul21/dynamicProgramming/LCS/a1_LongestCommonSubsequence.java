@@ -5,8 +5,8 @@ import java.util.Arrays;
 public class a1_LongestCommonSubsequence {
 
     public static void main(String[] args) {
-        char[] x = {'h', 'e', 'a', 'p'};
-        char[] y = {'p', 'e', 'a'};
+        char[] x = "aaaaaaaa".toCharArray();
+        char[] y = "aaaaaaaa".toCharArray();
 
         System.out.println("recursive :: " + recursive(x, y, x.length, y.length));
 

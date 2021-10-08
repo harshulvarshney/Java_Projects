@@ -1,13 +1,13 @@
 package tree.binaryTree;
 
-import tree.Node;
+import tree.TreeNode;
 
 public class JoinNextSibling {
 	
 	/**
 	 * Using pre-order traversal and without using extra space. 
 	 */
-	static void joinSigling(Node<Integer> root) {
+	static void joinSigling(TreeNode<Integer> root) {
 		//if root is null or leaf node, return
 		if(root == null || (root.left == null && root.right == null))
 			return;
@@ -24,7 +24,7 @@ public class JoinNextSibling {
 		joinSigling(root.left);
 	}
 	
-	static Node<Integer> getSiblingNode(Node<Integer> root) {
+	static TreeNode<Integer> getSiblingNode(TreeNode<Integer> root) {
 		while(root.next != null) {
 			if(root.next.left != null)
 				return root.next.left;

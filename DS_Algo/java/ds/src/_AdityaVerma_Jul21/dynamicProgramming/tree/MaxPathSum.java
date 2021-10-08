@@ -1,15 +1,15 @@
 package _AdityaVerma_Jul21.dynamicProgramming.tree;
 
 import tree.BTreePrinter;
-import tree.Node;
+import tree.TreeNode;
 
 /**
  * https://leetcode.com/problems/binary-tree-maximum-path-sum/
  */
 public class MaxPathSum {
     public static void main(String[] args) {
-        Node<Integer> root = new Node(10);
-        root.left = new Node(-9);
+        TreeNode<Integer> root = new TreeNode(10);
+        root.left = new TreeNode(-9);
        /* root.right = new Node(20);
         root.right.left = new Node(15);
         root.right.right = new Node(7);*/
@@ -20,7 +20,7 @@ public class MaxPathSum {
     }
 
     static int MAX = Integer.MIN_VALUE;
-    static int maxPathSum(Node<Integer> root) {
+    static int maxPathSum(TreeNode<Integer> root) {
         if(root == null)
             return 0;
 
@@ -29,8 +29,8 @@ public class MaxPathSum {
         int r = maxPathSum(root.right);
         r = r > 0 ? r : 0;
 
-        MAX = Math.max(MAX, root.data + l + r);
-        return root.data + (Math.max(l, r) > 0 ? Math.max(l, r) : 0);
+        MAX = Math.max(MAX, root.val + l + r);
+        return root.val + (Math.max(l, r) > 0 ? Math.max(l, r) : 0);
     }
 
 

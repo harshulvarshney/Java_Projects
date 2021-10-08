@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Queue;
 
 import tree.BTreeFactory;
-import tree.Node;
+import tree.TreeNode;
 
 /**
  * 	Take a Empty Queue.
@@ -20,14 +20,14 @@ import tree.Node;
  */
 public class BFS {
 	
-	public void leavelOrderTraversal(Node<Integer> root) {
+	public void leavelOrderTraversal(TreeNode<Integer> root) {
 		if(root == null)
 			return;
 		
-		Queue<Node<Integer>> q = new LinkedList<>();
+		Queue<TreeNode<Integer>> q = new LinkedList<>();
 		q.offer(root);
 		q.offer(null);
-		Node<Integer> n = null;
+		TreeNode<Integer> n = null;
 		boolean invert = true;
 		List<List<Integer>> resp = new ArrayList<>();
 		List<Integer> level = new ArrayList<>();
@@ -38,7 +38,7 @@ public class BFS {
 			if(n.right != null)
 				q.offer(n.right);
 			
-			System.out.print(n.data + ", ");
+			System.out.print(n.val + ", ");
 		}
 	}
 	

@@ -1,29 +1,29 @@
 package tree.binaryTree;
 
-import java.util.Stack;
-
 import tree.BTreeFactory;
-import tree.Node;
+import tree.TreeNode;
+
+import java.util.Stack;
 
 /**
  * 	First add the root to Stack.
-	Pop out an ele­ment from Stack and add its right and left chil­dren to stack.
-	Pop out an ele­ment and print it and add its children.
+	Pop out an eleï¿½ment from Stack and add its right and left chilï¿½dren to stack.
+	Pop out an eleï¿½ment and print it and add its children.
 	Repeat the above two steps until the Stack id empty.
  * @author harshul.varshney
  *
  */
 public class DFS {
 	
-	public void deapthFirstSearch(Node<Integer> root) {
+	public void deapthFirstSearch(TreeNode<Integer> root) {
 		if(root == null)
 			return;
 		
-		Stack<Node> stack = new Stack<>();
+		Stack<TreeNode> stack = new Stack<>();
 		stack.push(root);
 		while(!stack.isEmpty()) {
-			Node x = stack.pop();
-			System.out.print(x.data + " ");
+			TreeNode x = stack.pop();
+			System.out.print(x.val + " ");
 			if(x.right != null) stack.push(x.right);
 			if(x.left != null) stack.push(x.left);
 		}

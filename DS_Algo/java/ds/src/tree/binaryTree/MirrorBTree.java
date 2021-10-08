@@ -2,12 +2,12 @@ package tree.binaryTree;
 
 import tree.BTreeFactory;
 import tree.BTreePrinter;
-import tree.Node;
+import tree.TreeNode;
 
 public class MirrorBTree {
 	
 	public static void main(String[] s) {
-		Node root = BTreeFactory.getBinaryTree();
+		TreeNode root = BTreeFactory.getBinaryTree();
 		MirrorBTree o = new MirrorBTree();
 		o.createMirror(root);
 		BTreePrinter.printNode(root);
@@ -20,13 +20,13 @@ public class MirrorBTree {
 	 * 	change ref of right to left.
 	 * 
 	 */
-	private void createMirror(Node root) {
+	private void createMirror(TreeNode root) {
 		if(root == null) {
 			return;
 		}
 		createMirror(root.left);
 		createMirror(root.right);
-		Node temp = root.left;
+		TreeNode temp = root.left;
 		root.left = root.right;
 		root.right = temp;
 	}

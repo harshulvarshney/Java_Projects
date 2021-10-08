@@ -4,10 +4,10 @@ package linkedList;
  * Implementing a stack using linked-list.
  * 
  * Required operations:
-	Push() : Insert the ele­ment into linked list at the begin­ning and increase the size of the list. O(1) operation.
-	Pop() : Return the ele­ment first node from the linked list and move the head pointer to the sec­ond node. Decrease the size of the list. O(1) operation.
-	get­Size(): Return the size of linked list.
-	dis­playStack(): Print the linked list.
+	Push() : Insert the element into linked list at the beginning and increase the size of the list. O(1) operation.
+	Pop() : Return the element first node from the linked list and move the head pointer to the second node. Decrease the size of the list. O(1) operation.
+	getSize(): Return the size of linked list.
+	displayStack(): Print the linked list.
  * @author harshul.varshney
  *
  */

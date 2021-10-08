@@ -1,6 +1,6 @@
 package tree.binaryTree;
 
-import tree.Node;
+import tree.TreeNode;
 
 /**
  * BST (Binary Search Tree) is a Binary Tree s.t. 
@@ -13,37 +13,37 @@ import tree.Node;
  */
 public class BST {
 	
-	Node<Integer> root;
+	TreeNode<Integer> root;
 	
-	public Node<Integer> insert(Node<Integer> root, int n) {
+	public TreeNode<Integer> insert(TreeNode<Integer> root, int n) {
 		if(root == null) {
-			root = new Node<Integer>(n);
+			root = new TreeNode<Integer>(n);
 			return root;
 		}
 		
-		if(root.data < n) {
+		if(root.val < n) {
 			if(root.right == null)
-				root.right = new Node(n);
+				root.right = new TreeNode(n);
 			else
 				insert(root.right, n);
 		}
-		else if(root.data >= n) {
+		else if(root.val >= n) {
 			if(root.left == null)
-				root.left = new Node(n);
+				root.left = new TreeNode(n);
 			else
 				insert(root.left, n);
 		}
 		return root;
 	}
 	
-	public boolean find(Node<Integer> node, int n) {
-		if(node != null) {
-			if(node.data == n)
+	public boolean find(TreeNode<Integer> treeNode, int n) {
+		if(treeNode != null) {
+			if(treeNode.val == n)
 				return true;
-			if(node.data < n)
-				return find(node.right, n);
+			if(treeNode.val < n)
+				return find(treeNode.right, n);
 			else
-				return find(node.left, n);
+				return find(treeNode.left, n);
 		}
 		return false;
 	}
@@ -52,11 +52,11 @@ public class BST {
 		if(root == null)
 			return false;;
 		
-		Node<Integer> curr = root;
-		Node<Integer> parent = root;
+		TreeNode<Integer> curr = root;
+		TreeNode<Integer> parent = root;
 		boolean isLeftChild = false;
-		while(curr.data != n) {
-			if(curr.data < n) {
+		while(curr.val != n) {
+			if(curr.val < n) {
 				parent = curr;
 				curr = curr.right;
 			}

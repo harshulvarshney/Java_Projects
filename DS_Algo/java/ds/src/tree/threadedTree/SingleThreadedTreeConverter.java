@@ -1,12 +1,12 @@
 package tree.threadedTree;
 
 import tree.BTreeFactory;
-import tree.Node;
+import tree.TreeNode;
 
 /**
- * Each node is threaded towards either the in-order pre­de­ces­sor 
- * or suc­ces­sor (left orright) means all right null point­ers will point to 
- * inorder suc­ces­sor OR all left null point­ers will point to inorder predecessor.
+ * Each node is threaded towards either the in-order preï¿½deï¿½cesï¿½sor 
+ * or sucï¿½cesï¿½sor (left orright) means all right null pointï¿½ers will point to 
+ * inorder sucï¿½cesï¿½sor OR all left null pointï¿½ers will point to inorder predecessor.
  * 
  * ref: http://algorithms.tutorialhorizon.com/introduction-to-threaded-binary-tree/
  * 
@@ -19,31 +19,31 @@ public class SingleThreadedTreeConverter {
 	 * To convert a normal binary tree to threaded binary tree,
 	 * do in-order traversal in reverse and pass parent while traversing left.
 	 * 
-	 * @param node
+	 * @param treeNode
 	 * @param parent
 	 */
-	public void convert(Node<Integer> node, Node<Integer> parent) {
-		if(node == null)
+	public void convert(TreeNode<Integer> treeNode, TreeNode<Integer> parent) {
+		if(treeNode == null)
 			return;
 		
-		convert(node.right, parent);//reverse in-order.
-		if(node.right == null && parent != null) {
-			node.right = parent;
-			node.rightThread = true;
+		convert(treeNode.right, parent);//reverse in-order.
+		if(treeNode.right == null && parent != null) {
+			treeNode.right = parent;
+			treeNode.rightThread = true;
 		}
-		convert(node.left, node);//pass node as parent of left node.
+		convert(treeNode.left, treeNode);//pass node as parent of left node.
 	}
 	
 	/**
-	 * Threaded binary tree makes the tree tra­ver­sal faster 
-	 * since we do not need stack or recur­sion for traversal.
+	 * Threaded binary tree makes the tree traï¿½verï¿½sal faster 
+	 * since we do not need stack or recurï¿½sion for traversal.
 	 * 
 	 * @param root
 	 */
-	public void traverseThreadedTree(Node<Integer> root) {
-		Node<Integer> curr = findLeftMostNode(root);
+	public void traverseThreadedTree(TreeNode<Integer> root) {
+		TreeNode<Integer> curr = findLeftMostNode(root);
 		while(curr != null) {
-			System.out.print(curr.data + " ");
+			System.out.print(curr.val + " ");
 			if(curr.rightThread)
 				curr = curr.right;
 			else
@@ -51,19 +51,19 @@ public class SingleThreadedTreeConverter {
 		}
 	}
 	
-	private Node<Integer> findLeftMostNode(Node<Integer> node) {
-		if(node != null) {
-			while(node.left != null) {
-				node = node.left;
+	private TreeNode<Integer> findLeftMostNode(TreeNode<Integer> treeNode) {
+		if(treeNode != null) {
+			while(treeNode.left != null) {
+				treeNode = treeNode.left;
 			}
-			return node;
+			return treeNode;
 		}
 		return null;
 	}
 	
 	public static void main(String[] args) {
 		SingleThreadedTreeConverter obj = new SingleThreadedTreeConverter();
-		Node<Integer> root = BTreeFactory.getBinaryTree();
+		TreeNode<Integer> root = BTreeFactory.getBinaryTree();
 		obj.convert(root, null);
 		obj.traverseThreadedTree(root);
 	}

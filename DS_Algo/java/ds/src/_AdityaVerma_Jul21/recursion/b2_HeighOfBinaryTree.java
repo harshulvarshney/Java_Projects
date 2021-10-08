@@ -1,16 +1,16 @@
 package _AdityaVerma_Jul21.recursion;
 
 import tree.BTreeFactory;
-import tree.Node;
+import tree.TreeNode;
 
 public class b2_HeighOfBinaryTree {
 
     public static void main(String[] args) {
-        Node root = BTreeFactory.getBinaryTree();
+        TreeNode root = BTreeFactory.getBinaryTree();
         System.out.println(calHeight(root));
     }
 
-    static int calHeight(Node root) {
+    static int calHeight(TreeNode root) {
         if(root == null) {
             return 0;
         }

@@ -3,7 +3,7 @@ package tree.binaryTree;
 import java.util.Stack;
 
 import tree.BTreeFactory;
-import tree.Node;
+import tree.TreeNode;
 
 /**
  * 1-Use 2 stacks s1 and s2
@@ -22,21 +22,21 @@ public class PrintSpiral {
 		//System.out.println(i);
 	}
 	
-	static void spiral(Node<Integer> root) {
-		Stack<Node<Integer>> s1 = new Stack();
-		Stack<Node<Integer>> s2 = new Stack();
+	static void spiral(TreeNode<Integer> root) {
+		Stack<TreeNode<Integer>> s1 = new Stack();
+		Stack<TreeNode<Integer>> s2 = new Stack();
 		
 		s1.push(root);
 		while(!s1.isEmpty() || !s2.isEmpty()) {
 			while(!s1.isEmpty()) {
-				Node<Integer> n = s1.pop();
-				System.out.print(" " + n.data);
+				TreeNode<Integer> n = s1.pop();
+				System.out.print(" " + n.val);
 				if(n.left != null) s2.push(n.left);
 				if(n.right != null) s2.push(n.right);
 			}
 			while(!s2.isEmpty()) {
-				Node<Integer> n = s2.pop();
-				System.out.print(" " + n.data);
+				TreeNode<Integer> n = s2.pop();
+				System.out.print(" " + n.val);
 				if(n.right != null) s1.push(n.right);
 				if(n.left != null) s1.push(n.left);
 			}
